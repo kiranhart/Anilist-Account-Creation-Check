@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans Pro', sans-serif;
+}
+
+:root {
+    --bg-default-colour: rgb(22, 22, 22);
+    --bg-default-colour-hover: rgb(19, 18, 18);
+    --text-colour: white;
+    --overlay-colour: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    background: var(--bg-default-colour);
+    background-image: url('./assets/bg2.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background: var(--overlay-colour);
+}
+
+.center-all {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+#infoBox {
+    background: var(--text-colour);
+    color: var(--bg-default-colour);
+    border-radius: 5px;
+    min-width: 30rem;
+    max-width: 30rem;
+    padding: 2rem 1rem 0.8rem;
+    display: grid;
+}
+
+#infoBox > #avatarBox {
+    margin: 0 auto;
+    width: 10rem;
+    height: 10rem;
+    border: non;
+    box-shadow: 2px 3px 10px 3px rgba(0, 0, 0, 0.486);
+}
+
+#infoBox > #usernameInput {
+    margin: 1rem auto 0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    width: 25rem;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#usernameInput:focus {
+    outline: none;
+}
+
+#infoBox > button {
+    margin: 1rem auto 0;
+    padding: 1rem;
+    width: 10rem;
+    cursor: pointer;
+    border: none;
+    background: var(--bg-default-colour);
+    color: var(--text-colour);
+    font-size: 0.9rem;
+    letter-spacing: 0.1;
+    text-transform: capitalize;
+    transition: all 200ms;
+}
+
+#infoBox > button:hover {
+    background: var(--bg-default-colour-hover);
+}
+
+#infoBox > #accountCreationDate {
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#infoBox > a {
+    margin: 0 auto;
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: var(--text-colour);
+    background: rgb(97, 6, 36);
+    padding: 12px 15px;
+    border-radius: 50px;
+}
