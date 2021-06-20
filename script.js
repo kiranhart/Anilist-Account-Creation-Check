@@ -32,6 +32,45 @@ const fetchAccountCreationTime = async(username) => {
     const {data: { User }} = await request.json();
     const status = request.status;
     
+    if (User.createdAt === null) {
+        const requestFirstActivity = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'accept': 'application/json'
+            },
+            body: JSON.stringify({
+                query: `{
+                    Activity(userId: ${User.id} sort:ID) {
+                        ... on TextActivity {
+                            id,
+                            createdAt
+                        }
+                    
+                        ... on ListActivity {
+                            id,
+                            createdAt
+                        }
+                      
+                        ... on MessageActivity {
+                            id,
+                            createdAt
+                        }
+                    }
+                }`
+            })
+        })
+    
+        const {data: { Activity: {createdAt} }} = await requestFirstActivity.json();
+        return {
+            status,
+            id: User.id,
+            name: User.name,
+            created: createdAt,
+            avatar: User.avatar.large
+        }
+    }
+
     return {
         status,
         id: User.id,
